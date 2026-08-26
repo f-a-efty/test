@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faria Ahmed Efty | Engineering Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RICH SOLID BROWN & VINTAGE GOLD PALETTE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-base: #ffffffc2;          /* Warm Cream / Ivory Background */
+            --bg-gradient-top: #ffffff;  /* Elegant Top Soft Shading */
+            --surface-brown: #5C4033;    /* Rich, Solid Dark Brown */
+            --accent-gold: #D4AF37;      /* Classic Mustard/Antique Gold */
+            --text-dark: #2B2520;        /* Deep Charcoal Brown for prose */
+            --text-light: #FDFBF7;       /* Pure Warm White for dark backgrounds */
+            --border-tint: rgba(92, 64, 51, 0.15);
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            /* Uploaded navy-blue texture photo as the page background */
+            background-image: url("bg-texture.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: var(--bg-base);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            border-bottom: 1px solid var(--border-tint);
+            background: rgba(234, 227, 216, 0.8);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- GLOBAL UI ELEMENTS --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            color: var(--surface-brown);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin: 12px auto 0 auto;
+        }
+
+        /* BUTTONS */
+        .btn-vintage {
+            display: inline-block;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 600;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 14px 32px;
+            background-color: var(--surface-brown);
+            border: 1px solid var(--surface-brown);
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(92, 64, 51, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-vintage:hover {
+            background-color: transparent;
+            color: var(--surface-brown);
+            box-shadow: 0 4px 15px rgba(92, 64, 51, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--surface-brown);
+            border: 1px solid var(--surface-brown);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--surface-brown);
+            color: var(--text-light);
+        }
+
+        /* --- 1. FRONT PAGE WITH PICTURE --- */
+        header {
+            min-height: calc(100vh - 65px);
+            display: flex;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .btn-outline { margin-left: 0; margin-top: 15px; }
+            header { padding-top: 20px; }
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-gold);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: var(--text-dark);
+            opacity: 0.9;
+        }
+
+        .hero-image-wrapper {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 15px 15px 0px var(--surface-brown), 
+                        16px 16px 20px rgba(0,0,0,0.15);
+            object-fit: cover;
+            border: 2px solid var(--text-light);
+        }
+
+        /* --- 2. BIOGRAPHY SECTION --- */
+        #about {
+            background-color: rgba(92, 64, 51, 0.03);
+            border-top: 1px solid var(--border-tint);
+            border-bottom: 1px solid var(--border-tint);
+            padding: 90px 0;
+        }
+
+        .about-layout {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-layout p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        /* --- 3. PROJECT INDEX --- */
+        #projects {
+            padding: 90px 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--surface-brown);
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px rgba(92, 64, 51, 0.15);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-meta {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--accent-gold);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            color: var(--text-light);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .project-desc {
+            font-size: 0.98rem;
+            opacity: 0.85;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .project-btn {
+            background-color: var(--accent-gold);
+            color: var(--surface-brown);
+            border: 1px solid var(--accent-gold);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .project-btn:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        /* --- 4. TECHNICAL SKILLS --- */
+        #skills {
+            background-color: rgba(92, 64, 51, 0.03);
+            border-top: 1px solid var(--border-tint);
+            border-bottom: 1px solid var(--border-tint);
+            padding: 90px 0;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 12px 30px;
+            color: var(--text-light);
+            background-color: var(--surface-brown);
+            border: 1px solid var(--surface-brown);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--surface-brown);
+            transform: scale(1.05);
+        }
+
+        /* --- 5. EDUCATION CHRONICLES --- */
+        #education {
+            padding: 90px 0;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background-color: #FDFBF7;
+            border: 1px solid var(--border-tint);
+            border-left: 5px solid var(--accent-gold);
+            border-radius: 6px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .edu-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .edu-school {
+            font-weight: 500;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        .edu-gpa {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--surface-brown);
+            border: 1px dashed var(--surface-brown);
+            padding: 6px 18px;
+            background-color: rgba(92, 64, 51, 0.04);
+        }
+
+        /* --- 6. TELEGRAM DESK (CONTACT) --- */
+        #contact {
+            padding: 90px 0 140px 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--surface-brown);
+            border-radius: 8px;
+            padding: 45px;
+            box-shadow: 0 20px 40px rgba(92, 64, 51, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.08);
+            font-family: var(--font-sans);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-gold);
+            color: var(--surface-brown);
+            border-color: var(--accent-gold);
+            width: 100%;
+            font-weight: 700;
+        }
+
+        .btn-submit:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-dark);
+            border-top: 1px solid var(--border-tint);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">Biography</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Chronicles</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <header id="home">
+    <div class="hero-grid">
+        <div class="hero-text">
+            <h1>Hello, I'm <br><span>Faria Ahmed Efty</span></h1>
+            <p class="hero-desc">
+                CSE Student | Developer | Problem Solver <br>
+                Interested in Cybersecurity, IoT, and Intelligent Systems.
+                Building innovative solutions with purpose and precision.
+            </p>
+            
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <a href="#about" class="btn-vintage">About Me</a>
+                <a href="#projects" class="btn-vintage btn-outline" style="margin-left: 0;">View Projects</a>
+                
+                <div style="display: flex; align-items: center; gap: 12px; margin-left: 10px;">
+                    <span style="font-family: var(--font-serif); font-style: italic; font-size: 1rem; color: var(--surface-brown); font-weight: 600; white-space: nowrap;">Follow Me:</span>
+                    <a href="https://github.com/f-a-efty" target="_blank" title="GitHub Profile" style="color: var(--surface-brown); font-size: 1.6rem; transition: color 0.3s; line-height: 1;" onmouseover="this.style.color='var(--accent-gold)'" onmouseout="this.style.color='var(--surface-brown)'">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/fariaefty" target="_blank" title="LinkedIn Profile" style="color: var(--surface-brown); font-size: 1.6rem; transition: color 0.3s; line-height: 1;" onmouseover="this.style.color='var(--accent-gold)'" onmouseout="this.style.color='var(--surface-brown)'">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="profile.png" alt="Faria Ahmed Efty" class="hero-img">
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+
+        <section id="about">
+            <div class="about-layout">
+                <h2 class="section-title">About Me</h2>
+                <p>
+                    Hello, I am Faria Ahmed Efty, a Computer Science and Engineering student with a passion for transforming ideas into practical technology. Driven by curiosity and a constant desire to learn, I enjoy exploring the intersection of software, hardware, and intelligent systems to solve real-world problems.
+                </p>
+                <p>
+                    My interests span cybersecurity, embedded systems, IoT, networking, and software development. Whether designing efficient backend architectures, developing embedded solutions, or experimenting with innovative engineering concepts, I strive to build systems that are reliable, scalable, and meaningful.
+                </p>
+                <p>
+                    Beyond academics, I believe engineering is about creating technology that improves lives. Every project I undertake is an opportunity to learn, innovate, and contribute to solutions that bridge the gap between imagination and reality.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Project Index</h2>
+            <div class="project-grid">
+                
+                
+                <div class="project-card">
+                    <div>
+                        <div class="project-meta">IoT Project</div>
+                        <h3>Guardian Collar</h3>
+                        <p class="project-desc">Guardian Collar is a smart collar designed to
+communicate with pets using vibration-based
+signals instead of sound, while also allowing
+to monitor pets easily from anywhere with live
+camera. It uses AI to understand pet behav-
+ior, and provide useful insights to the owner.</p>
+                    </div>
+                    <a href="https://github.com/f-a-efty" target="_blank" class="btn-vintage project-btn">Brief & Link &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-meta">UI/UX Design</div>
+                        <h3>Koro. com</h3>
+                        <p class="project-desc">Koro.com is a task-sharing and earning platform that combines social media interaction with a job
+marketplace. It helps users post, discover, and complete tasks while connecting with verified people in a
+secure environment. The platform is designed to solve the problem of finding reliable help for daily tasks.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1wopCOVfnMNn4Fsp0zHHyEY4ts4ykdFie" target="_blank" class="btn-vintage project-btn">Brief & Link &rarr;</a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-meta">Blockchain Systems</div>
+                        <h3>IdenTrust</h3>
+                        <p class="project-desc">IdenTrust is a secure digital identity platform that provides reliable authentication and identity verification. It also encourages users to adopt sustainable habits, promotes responsible environmental practices, and inspires to building a cleaner, greener future.
+</p>
+                    </div>
+                    <a href="https://github.com/f-a-efty" class="btn-vintage project-btn">Brief & Link &rarr;</a>
+                </div>
+
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-meta">Web Development</div>
+                        <h3>EcoLoop</h3>
+                        <p class="project-desc">EcoLoop is an intelligent e-waste management platform that makes electronic waste disposal simple, secure, and sustainable.
+It connects users with certified collectors and promotes responsible recycling practices.
+Together, we reduce environmental pollution and build a cleaner, greener future.</p>
+                    </div>
+                    <a href="https://sadika-noor.github.io/EcoLoop/" target="_blank" class="btn-vintage project-btn">Brief & Link &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-tag">C</div>
+                <div class="skill-tag">C++</div>
+                <div class="skill-tag">Java</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">PHP</div>
+                <div class="skill-tag">HTML & CSS</div>
+                <div class="skill-tag">MySQL & SQL</div>
+                <div class="skill-tag">IoT Development</div>
+                <div class="skill-tag">Blockchain Fundamentals</div>
+                <div class="skill-tag">Secure System Design</div>
+                <div class="skill-tag">UI/UX Design</div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title">Education Chronicles</h2>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="edu-details">
+                        <h3>Bachelor of Science in Computer Science and Engineering (B.Sc. CSE)</h3>
+                        <p class="edu-school">United International University</p>
+                        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">Expected Graduation: 2028</p>
+                    </div>
+                    <div class="edu-gpa">Current CGPA 3.66 / 4.00</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="edu-details">
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <p class="edu-school">Safiuddin Sarker Academy and College</p>
+                    </div>
+                    <div class="edu-gpa">GPA 5.00 / 5.00</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="edu-details">
+                        <h3>Secondary School Certificate (SSC)</h3>
+                        <p class="edu-school">Safiuddin Sarker Academy and College</p>
+                    </div>
+                    <div class="edu-gpa">GPA 5.00 / 5.00</div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact Desk</h2>
+            
+            <form action="https://formspree.io/f/xwvdoyoj" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="_replyto" required placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Write your letter here..."></textarea>
+                </div>
+                <button type="submit" class="btn-vintage btn-submit">Send Message</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Faria Ahmed Efty.</p>
+    </footer>
+
+</body>
+</html>
